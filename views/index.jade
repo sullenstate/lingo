@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	.container
+		h1 Translator
+
+		form#translate
+			input.form-control.input-lg(name="textToTranslate" placeholder="Please enter the text to translate")
+			.form-group
+				.row
+					.col-xs-6
+						label(for="fromLanguage") Translate From
+						select.form-control(name="fromLanguage" id="fromLanguage")
+							for language in languages
+								if language.language === 'en'
+									option(value="#{language.language}" selected) #{language.name}
+								else
+									option(value="#{language.language}") #{language.name}
+					.col-xs-6
+						label(for="toLanguage") Translate To
+						select.form-control(name="toLanguage")
+							for language in languages
+								if language.language === 'es'
+									option(value="#{language.language}" selected) #{language.name}
+								else
+									option(value="#{language.language}") #{language.name}
+					
+			.form-group
+			input.btn.btn-primary.btn-lg.btn-block(type="submit" value="Translate!")
+
+		.translation
